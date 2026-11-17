@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Эльфы и корованы</title>
+  <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+  <div id="game"></div>
+
+  <div id="hud" class="hidden">
+    <div id="blindL" class="blind left"></div>
+    <div id="blindR" class="blind right"></div>
+    <div id="hurt"></div>
+    <div id="crosshair">+</div>
+    <div id="mission"></div>
+    <div id="zone"></div>
+    <canvas id="minimap" width="180" height="180"></canvas>
+    <div id="log"></div>
+    <div id="prompt"></div>
+    <div id="stats">
+      <div class="bar"><div id="hpbar"></div><span id="hptext"></span></div>
+      <div id="statline"></div>
+      <div id="injuries"></div>
+    </div>
+    <div id="hint">
+      WASD — ходить · Shift — бег · Пробел — прыжок · ЛКМ — удар/выстрел · E — действие<br>
+      H — бинт · Q — зелье · I — сумка · 1–6 — оружие · V — вид · R/T/G — приказы · M — карта<br>
+      K / F5 — сохранить · L / F9 — загрузить · Esc — пауза
+    </div>
+  </div>
+
+  <div id="menu" class="screen">
+    <h1>Эльфы и корованы</h1>
+    <p class="sub">3Д-экшон. Суть такова… Четыре зоны: люди, император, лесные эльфы и Злой в горах.
+      Можно грабить корованы. Можно лишиться руки, ноги или глаза — и купить протез.</p>
+    <div class="factions">
+      <div class="fcard" data-faction="elves">
+        <h3>Лесные эльфы</h3>
+        <p>Густой лес, деревянные домики. Набегают солдаты дворца и войска Злого.
+          Старейшина даёт задания. Грабьте корованы!</p>
+      </div>
+      <div class="fcard" data-faction="guard">
+        <h3>Охрана дворца</h3>
+        <p>Слушайтесь командира. Защищайте дворец от Злого, шпионов и партизан-эльфов,
+          ходите в набеги на лес и на старый форт.</p>
+      </div>
+      <div class="fcard" data-faction="villain">
+        <h3>Злой</h3>
+        <p>Имя не придумано. Сам себе командир: прикажите войскам идти за вами
+          и ведите их в атаку на дворец. Партизаны иногда нападают на форт.</p>
+      </div>
+    </div>
+    <div class="menu-btns">
+      <button id="btnLoad">Загрузить сохранение</button>
+    </div>
+    <p class="controls">Кликните по карточке, чтобы начать. Мышь — обзор (курсор захватывается, Esc — освободить).<br>
+      Вдали деревья — картинки, вблизи они превращаются в трёхмерные. Враги и трупы — тоже 3Д.</p>
+  </div>
+
+  <div id="modal" class="screen hidden">
+    <div class="panel">
+      <h2 id="modalTitle"></h2>
+      <div id="modalBody"></div>
+      <div class="panel-foot"><button id="modalClose">Закрыть (Esc)</button></div>
+    </div>
+  </div>
+
+  <div id="pause" class="screen hidden">
+    <div class="panel center">
+      <h2>Пауза</h2>
+      <p>Кликните, чтобы продолжить.</p>
+      <button id="btnPauseSave">Сохранить</button>
+      <button id="btnPauseMenu">В главное меню</button>
+    </div>
+  </div>
+
+  <div id="death" class="screen hidden">
+    <div class="panel center">
+      <h1>Вы погибли</h1>
+      <p id="deathCause"></p>
+      <button id="btnDeathLoad">Загрузить сохранение</button>
+      <button id="btnDeathMenu">В главное меню</button>
+    </div>
+  </div>
+
+  <div id="bigmap" class="screen hidden">
+    <canvas id="bigmapCanvas" width="640" height="640"></canvas>
+  </div>
+
+  <script src="vendor/three.min.js"></script>
+  <script src="src/util.js"></script>
+  <script src="src/injuries.js"></script>
+  <script src="src/world.js"></script>
+  <script src="src/trees.js"></script>
+  <script src="src/fx.js"></script>
+  <script src="src/entities.js"></script>
+  <script src="src/combat.js"></script>
+  <script src="src/ai.js"></script>
+  <script src="src/director.js"></script>
+  <script src="src/player.js"></script>
+  <script src="src/ui.js"></script>
+  <script src="src/save.js"></script>
+  <script src="src/game.js"></script>
+</body>
+</html>
